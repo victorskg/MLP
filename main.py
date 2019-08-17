@@ -4,7 +4,7 @@ import DataUtils as ut
 
 def main():
     att = [0, 1, 2, 3]
-    mlp = MLP(4, 0.1, 500, 4, 3)
+    mlp = MLP(4, 0.1, 500, 6, 3)
     d = ut.get_iris_data().to_numpy()
     
     np.random.shuffle(d)

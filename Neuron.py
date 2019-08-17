@@ -2,6 +2,10 @@ import math
 import numpy as np
 
 class Neuron(object):
+    
+    error = 1
+    derivative_v = 1
+
     def __init__(self, att_number, learn_rate):
         self.learn_rate = learn_rate
         self.att_number = att_number
@@ -11,7 +15,9 @@ class Neuron(object):
         return np.dot(inputs, self.weights[1:]) + self.weights[0]
 
     def update(self, inputs, error, guess):
-        update = self.learn_rate * error * self.derivative(guess)
+        self.error = error
+        self.derivative_v = self.derivative(guess)
+        update = self.learn_rate * error * self.derivative_v
         self.weights[1:] += update * np.array(inputs)
         self.weights[0] += update
 
