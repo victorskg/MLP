@@ -39,7 +39,7 @@ class MLP(object):
 
     @staticmethod
     def inputs_and_expected(d, att):
-        expected = np.array(list(d[4])).astype(np.int)
+        expected = np.array(list(d[len(d)-1])).astype(np.int)
         selected_inputs = [d[att[i]] for i in range(len(att))]
         return selected_inputs, expected
 
