@@ -34,12 +34,12 @@ class MLP(object):
             hits = hits + 1 if np.array_equal(predict, expected) else hits
             #print('Expected: {0}, Predict: {1}'.format(expected, predict))
 
-        print((hits / len(test_data)) * 100)
+        #print((hits / len(test_data)) * 100)
         return (hits / len(test_data)) * 100
 
     @staticmethod
     def inputs_and_expected(d, att):
-        expected = np.array(list(d[len(d)-1])).astype(np.int)
+        expected = np.array([d[len(d)-1]]) if (isinstance(d[len(d)-1], np.floating)) else np.array(list(d[len(d)-1])).astype(np.int)
         selected_inputs = [d[att[i]] for i in range(len(att))]
         return selected_inputs, expected
 

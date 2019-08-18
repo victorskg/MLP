@@ -12,6 +12,8 @@ class HiddenLayer(object):
     def run_layer(self, inputs):
         self.outputs = [self.neurons[i].run_neuron(inputs) for i in range(self.n_neurons)]
 
+        return self.outputs
+
     def update_layer(self, inputs, out_layer):
         for i in range(self.n_neurons):
             error_n = 0
