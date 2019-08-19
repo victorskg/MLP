@@ -29,6 +29,7 @@ class ELM(object):
         
         y = np.dot(_H.T, self.beta)
         y_label = [self.predict(out) for out in y]
+        self.y_label = y_label
         
         for i,j in zip(y_label, d):
             hits = hits + 1 if np.array_equal(i, j) else hits

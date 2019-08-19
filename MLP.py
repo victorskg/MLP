@@ -32,10 +32,14 @@ class MLP(object):
             outputs = self.output_layer.run_test(self.hidden_layer.outputs)
             predict = self.predict(outputs)
             hits = hits + 1 if np.array_equal(predict, expected) else hits
-            #print('Expected: {0}, Predict: {1}'.format(expected, predict))
 
-        #print((hits / len(test_data)) * 100)
         return (hits / len(test_data)) * 100
+
+    def get_predict(self, inputs):
+        hiden_out = self.hidden_layer.run_layer(inputs)
+        out_out = self.output_layer.run_test(hiden_out)
+        
+        return self.predict(out_out)
 
     @staticmethod
     def inputs_and_expected(d, att):
